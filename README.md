@@ -1,102 +1,50 @@
-# Express Mysql Boilerplate
+# Calculate Packing
 
-> A simple boilerplate for building RESTful API with ExpressJS and Mysql
+> A RESTful API for calulate parking with ExpressJS
 
 ## Package
 - ExpressJS
 - Babel
-- Mysql
-- Knex
-- Bookshelf
 
 ## Using API
-  - Config your database in `knexfile.js`
   - Run command
   
 ```bash
-git clone https://github.com/chutiphon-k/express-mysql-boilerplate.git
+git clone https://github.com/chutiphon-k/calculate-parking.git
 npm install
-npm run build # Migrate and seed database
+npm run build # Genarate file fee_table.json
 npm run dev # For run development
+npm run prod # For run production
 ```
 
 ## RESTful API
 
 | HTTP METHOD | GET            | POST       | PUT         | PATCH | DELETE |
 | ----------- | --------------- | --------- | ----------- | ------ | ------ |
-| /example       | Get Example | Post Example |  | Patch Example | Delete Example |
-| /users       | List users | Create new user |  |  |  |
-| /users/:id       | Get user by id |  |  | Update user by id | Delete user by id |
+| /mall/:id/checkprice       | Get Fee | |  | | |
+| /mall/:id/checkin       | | Checkin Time |  |  |  |
 
 ## Request & Response Examples
 
 ### API Resources
 
-  - [GET /users](#get-users)
-  - [POST /users](#post-usersid)
-  - [GET /users/:id](#get-usersid)
+  - [GET /mall/:id/checkprice](#get-mallidcheckprice)
+  - [POST /mall/:id/checkin](#post-mallidcheckin)
 
-### GET /users
+### GET /mall/:id/checkprice
 
-Example: http://localhost:9090/api/users
+Example: http://localhost:9090/mall/:id/checkprice?currentTime=2017-03-12T18:39:56.081Z
 
 Response body:
 
-	[
-		{
-			"id": 1,
-			"username": "user1",
-			"firstname": "ชุติพนธ์",
-			"lastname": "คงสมพรต",
-			"nickname": "เจมส์",
-			"created_at": "2017-03-11T15:28:58.000Z",
-			"updated_at": "2017-03-11T15:28:58.000Z"
-		},
-		{
-			"id": 2,
-			"username": "user2",
-			"firstname": "สมชาย",
-			"lastname": "นะครับ",
-			"nickname": "ชาย",
-			"created_at": "2017-03-11T15:28:58.000Z",
-			"updated_at": "2017-03-11T15:28:58.000Z"
-		},
-		{
-			"id": 3,
-			"username": "user3",
-			"firstname": "สมหญิง",
-			"lastname": "นะค่ะ",
-			"nickname": "หญิง",
-			"created_at": "2017-03-11T15:28:58.000Z",
-			"updated_at": "2017-03-11T15:28:58.000Z"
-		}
-	]
+	Total fee = 40 Bath
 
-### POST /users
+### POST /mall/:id/checkin
 
-Example: Create – POST  http://localhost:9090/api/users
+Example: Create – POST  http://localhost:9090/mall/:id/checkin
 
 Request body:
 
     {
-		"username": "user4",
-		"firstname": "hello",
-		"lastname": "world",
-		"nickname": "haha",
+		"entryTime": "2017-03-12T14:39:56.081Z"
     }
-
-### GET /users/:id
-
-Example: http://localhost:9090/api/users/1
-
-Response body:
-
-	{
-		"id": 1,
-		"username": "user1",
-		"firstname": "ชุติพนธ์",
-		"lastname": "คงสมพรต",
-		"nickname": "เจมส์",
-		"created_at": "2017-03-11T15:28:58.000Z",
-		"updated_at": "2017-03-11T15:28:58.000Z"
-	}
