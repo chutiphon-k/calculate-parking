@@ -1,6 +1,8 @@
 import moment from 'moment'
 import config from 'config'
 import _ from 'lodash'
+import fs from 'fs'
+import path from 'path'
 
 let data = config.Fee
 
@@ -29,6 +31,23 @@ let getFee = (id, time) => {
 	return fee
 }
 
+let getFeeFromFeeTable = (id, time) => {
+	try{
+		let fee = 0
+		time = moment.duration(time, 'minutes')
+		let feeTable = JSON.parse(fs.readFileSync(path.join(__dirname, 'fee_table.json'), 'utf8'))
+		if(time.asMinutes() > feeTable[id].free_time){
+			let timeRound = Math.floor(time.asHours()) + ((time.asMinutes()%60 > feeTable[id].round_time) ? 1:0)
+			fee = feeTable[id].fee_time[timeRound]
+		}
+		return fee
+	}
+	catch(err) {
+	  console.log(`Please run command 'npm run build' for generate file fee_table.json`)
+	}
+}
+
 export {
-	getFee
+	getFee,
+	getFeeFromFeeTable
 }
