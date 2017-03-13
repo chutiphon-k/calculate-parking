@@ -6,6 +6,7 @@
   "author": "Chutiphon.k <chutiphon.k@ku.th>",
   "license": "MIT",
   "scripts": {
+    "build": "babel-node ./src/utilities/build_fee.js",
     "dev": "nodemon ./src/bin/server.js --exec babel-node",
     "prod": "babel-node ./src/bin/server.js"
   },

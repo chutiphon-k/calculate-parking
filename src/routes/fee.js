@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import moment from 'moment'
-import { getFee } from '../utilities'
+import { feeTable } from '../utilities'
 
 const router = Router({mergeParams: true})
 let entryTime
@@ -24,7 +24,12 @@ router.get('/checkprice', (req, res, next) => {
 	if(timeDiff.asHours() > 24){
 		res.status(400).send('Error: Total time is greater than 24 hours')
 	} else {
-		res.send(`Total fee = ${getFee(id, timeDiff)} Bath`)
+		let fee = 0
+		if(timeDiff.asMinutes() > feeTable[id].free_time){
+			let timeRound = Math.floor(timeDiff.asHours()) + ((timeDiff.asMinutes()%60 > feeTable[id].round_time) ? 1:0)
+			fee = feeTable[id].fee_time[timeRound]
+		}
+		res.send(`Total fee = ${fee} Bath`)
 	}
 })
 

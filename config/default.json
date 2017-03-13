@@ -2,5 +2,36 @@
   "Api": {
     "url": "localhost",
     "port": "9090"
+  },
+  "Fee": {
+	"1": {
+		"name": "Siam Paragon",
+		"free_time": 120,
+		"round_time": 30,
+		"fee_range": {
+			"3-6": 30,
+			"7-24": 60
+		}
+	},
+	"2": {
+		"name": "Central World",
+		"free_time": 30,
+		"round_time": 0,
+		"fee_range": {
+			"1-5": 20,
+			"6-24": 50
+		}
+	},
+	"3": {
+		"name": "Central Ladprao",
+		"free_time": 60,
+		"round_time": 30,
+		"fee_range": {
+			"2": 20,
+			"3": 20,
+			"4": 40,
+			"5-24": 50
+		}
+	}
   }
 }
