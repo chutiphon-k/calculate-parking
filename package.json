@@ -1,7 +1,7 @@
 {
   "name": "calculate-parking",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/bin/server.js",
   "repository": "https://chutiphon-k@github.com/chutiphon-k/calculate-parking.git",
   "author": "Chutiphon.k <chutiphon.k@ku.th>",
   "license": "MIT",
@@ -17,7 +17,9 @@
     "compression": "^1.6.2",
     "config": "^1.25.1",
     "cors": "^2.8.1",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "lodash": "^4.17.4",
+    "moment": "^2.17.1"
   },
   "devDependencies": {
     "errorhandler": "^1.5.0",
